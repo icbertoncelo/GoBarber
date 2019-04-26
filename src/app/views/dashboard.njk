@@ -1,1 +1,6 @@
-<h1>DASHBOARD</h1>
+{% extends "_layouts/default.njk"%}
+
+{% block body %}
+  <h1>Hello, {{ user.name }}</h1>
+  <a href="/app/logout">Logout</a>
+{% endblock %}
