@@ -1,6 +1,8 @@
 node_modules
 yarn.lock
-tmp/upload/*
-tmp*
-!tmp/upload/.gitkeep
+
+tmp/*
 !tmp/.gitkeep
+
+tmp/upload/*
+!tmp/upload/.gitkeep
