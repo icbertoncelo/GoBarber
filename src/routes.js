@@ -5,6 +5,8 @@ const upload = require('multer')(multerConfig)
 
 const UserController = require('./app/controllers/UserController')
 const SessionController = require('./app/controllers/SessionController')
+const DashboardController = require('./app/controllers/DashboardController')
+const FileController = require('./app/controllers/FileController')
 
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
@@ -26,9 +28,8 @@ routes.post('/signup', upload.single('avatar'), UserController.store)
 routes.use('/app', authMiddleware)
 
 routes.use('/app/logout', SessionController.destroy)
-routes.get('/app/dashboard', (req, res) => {
-  console.log(req.session.user)
-  return res.render('dashboard')
-})
+routes.get('/app/dashboard', DashboardController.index)
+
+routes.get('/files/:file', FileController.show)
 
 module.exports = routes
