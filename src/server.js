@@ -1,5 +1,6 @@
 const express = require('express')
 const nunjucks = require('nunjucks')
+const dateFilter = require('nunjucks-date-filter')
 const session = require('express-session')
 const LokiStore = require('connect-loki')(session)
 const path = require('path')
@@ -32,11 +33,12 @@ class App {
   }
 
   views () {
-    nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {
+    var env = nunjucks.configure(path.resolve(__dirname, 'app', 'views'), {
       watch: this.isDev,
       express: this.express,
       autoescape: true
     })
+    env.addFilter('date', dateFilter)
     this.express.use(express.static(path.resolve(__dirname, 'public')))
     this.express.set('view engine', 'njk')
   }

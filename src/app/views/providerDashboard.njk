@@ -1,0 +1,28 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <div class="content">
+    <strong>Hello, {{ user.name }}</strong>
+    {% if schedule|length %}
+      <p>This is your Appointments</p>
+
+      <ul class="providers">
+        {% for order in schedule %}
+          <li class="provider">
+            <div>
+              <img src="/files/{{ order.user.avatar }}" />
+              <strong>
+                {{ order.user.name }}
+                <br>
+                {{ order.date | date("HH:mm") }}
+              </strong>
+            </div>
+          </li>
+        {% endfor %}
+      {% else %}
+        <p>You don't have appointments today</p>
+      {% endif%}
+    </ul>
+  <a href="/app/logout" class="logout">Logout</a>
+  </div>
+{% endblock %}

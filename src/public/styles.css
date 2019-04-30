@@ -287,6 +287,13 @@ ul.providers {
   margin-top: 5px;
 }
 
+.main-wrapper .content form a {
+  margin-top: 15px;
+  display: block;
+  text-align: center;
+  color: #999;
+  text-decoration: none;
+}
 .main-wrapper .content form button:hover {
   background: #634dac;
 }
